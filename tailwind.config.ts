@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["DM Sans", "system-ui", "sans-serif"],
+        display: ["Sora", "system-ui", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,9 +51,18 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        surface: {
-          DEFAULT: "hsl(var(--surface))",
-          foreground: "hsl(var(--surface-foreground))",
+        bara: {
+          orange: "hsl(var(--bara-orange))",
+          "orange-light": "hsl(var(--bara-orange-light))",
+          "orange-dark": "hsl(var(--bara-orange-dark))",
+          green: "hsl(var(--bara-green))",
+          "green-light": "hsl(var(--bara-green-light))",
+          yellow: "hsl(var(--bara-yellow))",
+          dark: "hsl(var(--bara-dark))",
+          gray: "hsl(var(--bara-gray))",
+          earth: "hsl(var(--bara-earth))",
+          "earth-light": "hsl(var(--bara-earth-light))",
+          "earth-dark": "hsl(var(--bara-earth-dark))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -66,20 +79,9 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-        xl: "calc(var(--radius) + 6px)",
-      },
-      fontFamily: {
-        display: ["var(--font-display)", "ui-serif", "Georgia", "serif"],
-        body: ["var(--font-body)", "ui-sans-serif", "system-ui", "sans-serif"],
-      },
-      backgroundImage: {
-        "gradient-primary": "var(--gradient-primary)",
-        "gradient-hero": "var(--gradient-hero)",
-        noise: "var(--noise)",
-      },
-      boxShadow: {
-        elevated: "var(--shadow-elevated)",
-        glow: "var(--shadow-glow)",
+        xl: "calc(var(--radius) + 4px)",
+        "2xl": "calc(var(--radius) + 8px)",
+        "3xl": "calc(var(--radius) + 16px)",
       },
       keyframes: {
         "accordion-down": {
@@ -90,20 +92,53 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "fade-up": {
-          from: { opacity: "0", transform: "translateY(10px)" },
+        "fade-in": {
+          from: { opacity: "0", transform: "translateY(20px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "fade-in-left": {
+          from: { opacity: "0", transform: "translateX(-20px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        "fade-in-right": {
+          from: { opacity: "0", transform: "translateX(20px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        "scale-in": {
+          from: { opacity: "0", transform: "scale(0.95)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        pulse: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.7" },
+        },
         shimmer: {
-          from: { backgroundPosition: "0% 0%" },
-          to: { backgroundPosition: "200% 0%" },
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        "gradient-shift": {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-up": "fade-up 0.6s cubic-bezier(.2,.8,.2,1) both",
-        shimmer: "shimmer 1.2s linear infinite",
+        "fade-in": "fade-in 0.6s ease-out forwards",
+        "fade-in-left": "fade-in-left 0.6s ease-out forwards",
+        "fade-in-right": "fade-in-right 0.6s ease-out forwards",
+        "scale-in": "scale-in 0.4s ease-out forwards",
+        float: "float 3s ease-in-out infinite",
+        pulse: "pulse 2s ease-in-out infinite",
+        shimmer: "shimmer 2s linear infinite",
+        "gradient-shift": "gradient-shift 8s ease infinite",
+      },
+      backgroundSize: {
+        "400": "400% 400%",
       },
     },
   },
