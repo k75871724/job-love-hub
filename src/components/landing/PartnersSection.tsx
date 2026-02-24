@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import orangeLogo from "@/assets/partners/orange.svg";
 import mtnMomoLogo from "@/assets/partners/mtn-momo.svg";
 import waveLogo from "@/assets/partners/wave.png";
-import moovLogo from "@/assets/partners/moov.ico";
+import moovLogo from "@/assets/partners/moov.svg";
 
 type Partner = {
   name: string;
@@ -49,43 +49,52 @@ function PartnerLogo({ partner }: { partner: Partner }) {
       alt={partner.logoAlt ?? partner.name}
       loading="lazy"
       decoding="async"
-      className="h-7 w-auto max-w-[140px] object-contain"
+      className="h-8 w-auto max-w-[160px] object-contain"
     />
   );
 }
 
 export function PartnersSection() {
   return (
-    <section className="py-16 bg-muted/30 border-y border-border">
-      <div className="container mx-auto px-4">
+    <section className="relative overflow-hidden py-20 border-y border-border bg-mesh">
+      <div className="absolute inset-0 pattern-dots opacity-60" aria-hidden="true" />
+
+      <div className="container mx-auto px-4 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <p className="text-muted-foreground font-medium">Paiement sécurisé via</p>
+          <h2 className="text-3xl md:text-4xl font-display text-foreground">
+            Paiement sécurisé via
+          </h2>
+          <p className="mt-3 text-muted-foreground font-medium max-w-2xl mx-auto">
+            Vos transactions sont traitées via des partenaires Mobile Money reconnus.
+          </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="flex flex-wrap justify-center items-center gap-8 lg:gap-16"
+          transition={{ delay: 0.15 }}
+          className="glass rounded-3xl p-6 md:p-8 shadow-card"
         >
-          {partners.map((partner, index) => (
-            <motion.div
-              key={partner.name}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 * index }}
-              className="flex items-center justify-center px-6 py-3 rounded-xl bg-card border border-border shadow-soft hover:shadow-card transition-shadow"
-            >
-              <PartnerLogo partner={partner} />
-            </motion.div>
-          ))}
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+            {partners.map((partner, index) => (
+              <motion.div
+                key={partner.name}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.08 * index }}
+                className="hover-lift flex items-center justify-center px-6 py-4 rounded-2xl bg-card/70 border border-border/70 shadow-soft"
+              >
+                <PartnerLogo partner={partner} />
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
