@@ -83,7 +83,7 @@ function TrustPill({
 
 export function PartnersSection() {
   return (
-    <section className="relative overflow-hidden py-20 bg-background">
+    <section className="relative -mt-[72px] md:-mt-[88px] overflow-hidden pt-[72px] md:pt-[88px] pb-20 bg-background">
       {/* Top wave that follows the Hero bottom wave + border */}
       <div className="absolute top-0 left-0 right-0 -translate-y-px" aria-hidden="true">
         <svg
