@@ -84,11 +84,29 @@ function TrustPill({
 export function PartnersSection() {
   return (
     <section className="relative overflow-hidden py-20 bg-background">
-      {/* Blend with Hero bottom wave */}
-      <div
-        className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent"
-        aria-hidden="true"
-      />
+      {/* Top wave that follows the Hero bottom wave + border */}
+      <div className="absolute top-0 left-0 right-0 -translate-y-px" aria-hidden="true">
+        <svg
+          viewBox="0 0 1440 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-[72px] md:h-[88px]"
+          preserveAspectRatio="none"
+        >
+          {/* Fill to match section background */}
+          <path
+            d="M0 0L60 10C120 20 240 40 360 45C480 50 600 40 720 35C840 30 960 30 1080 35C1200 40 1320 50 1380 55L1440 60V0H1380C1320 0 1200 0 1080 0C960 0 840 0 720 0C600 0 480 0 360 0C240 0 120 0 60 0H0Z"
+            fill="hsl(var(--background))"
+          />
+          {/* Border line that visually connects the two sections */}
+          <path
+            d="M0 0L60 10C120 20 240 40 360 45C480 50 600 40 720 35C840 30 960 30 1080 35C1200 40 1320 50 1380 55L1440 60"
+            stroke="hsl(var(--border))"
+            strokeWidth="1"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
+      </div>
 
       {/* Ambient background */}
       <div className="absolute inset-0 bg-mesh" aria-hidden="true" />
