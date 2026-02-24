@@ -1,11 +1,44 @@
 import { motion } from "framer-motion";
 
-const partners = [
-  { name: "Orange Money", logo: "🟠" },
-  { name: "MTN Mobile Money", logo: "🟡" },
-  { name: "Wave", logo: "🌊" },
-  { name: "Moov Money", logo: "🔵" },
+import mtnMomoLogo from "@/assets/partners/mtn-momo.svg";
+
+type Partner = {
+  name: string;
+  logoSrc?: string;
+  logoAlt?: string;
+};
+
+const partners: Partner[] = [
+  // TODO: Ajouter les logos officiels (fichiers SVG/PNG) dès qu’on les a.
+  { name: "Orange Money" },
+  {
+    name: "MTN Mobile Money",
+    logoSrc: mtnMomoLogo,
+    logoAlt: "Logo MTN Mobile Money (MoMo)",
+  },
+  { name: "Wave" },
+  { name: "Moov Money" },
 ];
+
+function PartnerLogo({ partner }: { partner: Partner }) {
+  if (!partner.logoSrc) {
+    return (
+      <span className="text-sm font-semibold text-foreground">
+        {partner.name}
+      </span>
+    );
+  }
+
+  return (
+    <img
+      src={partner.logoSrc}
+      alt={partner.logoAlt ?? partner.name}
+      loading="lazy"
+      decoding="async"
+      className="h-7 w-auto max-w-[140px] object-contain"
+    />
+  );
+}
 
 export function PartnersSection() {
   return (
@@ -17,9 +50,7 @@ export function PartnersSection() {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <p className="text-muted-foreground font-medium">
-            Paiement sécurisé via
-          </p>
+          <p className="text-muted-foreground font-medium">Paiement sécurisé via</p>
         </motion.div>
 
         <motion.div
@@ -36,10 +67,9 @@ export function PartnersSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * index }}
-              className="flex items-center gap-3 px-6 py-3 rounded-xl bg-card border border-border shadow-soft hover:shadow-card transition-shadow"
+              className="flex items-center justify-center px-6 py-3 rounded-xl bg-card border border-border shadow-soft hover:shadow-card transition-shadow"
             >
-              <span className="text-2xl">{partner.logo}</span>
-              <span className="font-semibold text-foreground">{partner.name}</span>
+              <PartnerLogo partner={partner} />
             </motion.div>
           ))}
         </motion.div>
