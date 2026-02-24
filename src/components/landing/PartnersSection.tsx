@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 
+import orangeLogo from "@/assets/partners/orange.svg";
 import mtnMomoLogo from "@/assets/partners/mtn-momo.svg";
+import waveLogo from "@/assets/partners/wave.png";
+import moovLogo from "@/assets/partners/moov.ico";
 
 type Partner = {
   name: string;
@@ -9,15 +12,26 @@ type Partner = {
 };
 
 const partners: Partner[] = [
-  // TODO: Ajouter les logos officiels (fichiers SVG/PNG) dès qu’on les a.
-  { name: "Orange Money" },
+  {
+    name: "Orange Money",
+    logoSrc: orangeLogo,
+    logoAlt: "Logo Orange Money",
+  },
   {
     name: "MTN Mobile Money",
     logoSrc: mtnMomoLogo,
     logoAlt: "Logo MTN Mobile Money (MoMo)",
   },
-  { name: "Wave" },
-  { name: "Moov Money" },
+  {
+    name: "Wave",
+    logoSrc: waveLogo,
+    logoAlt: "Logo Wave",
+  },
+  {
+    name: "Moov Money",
+    logoSrc: moovLogo,
+    logoAlt: "Logo Moov Money",
+  },
 ];
 
 function PartnerLogo({ partner }: { partner: Partner }) {
