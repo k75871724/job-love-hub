@@ -83,7 +83,13 @@ function TrustPill({
 
 export function PartnersSection() {
   return (
-    <section className="relative overflow-hidden py-20 border-y border-border bg-mesh">
+    <section className="relative overflow-hidden py-20 bg-mesh">
+      {/* Top fade to blend with Hero wave */}
+      <div
+        className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-background via-background/70 to-transparent"
+        aria-hidden="true"
+      />
+
       <div className="absolute inset-0 pattern-dots opacity-60" aria-hidden="true" />
 
       <div className="container mx-auto px-4 relative">
