@@ -3,7 +3,7 @@ import { Lock, ShieldCheck, BadgeCheck } from "lucide-react";
 
 import orangeLogo from "@/assets/partners/orange-official.svg";
 import mtnMomoLogo from "@/assets/partners/mtn-momo.svg";
-import waveLogo from "@/assets/partners/wave-official.png";
+import waveLogo from "@/assets/partners/wave-transparent.png";
 import moovMoneyLogo from "@/assets/partners/moov-money-flooz.png";
 
 type Partner = {
