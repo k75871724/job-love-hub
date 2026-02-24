@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+import { Lock, ShieldCheck, BadgeCheck } from "lucide-react";
 
-import orangeLogo from "@/assets/partners/orange.svg";
+import orangeLogo from "@/assets/partners/orange-official.svg";
 import mtnMomoLogo from "@/assets/partners/mtn-momo.svg";
-import waveLogo from "@/assets/partners/wave.png";
-import moovLogo from "@/assets/partners/moov.svg";
+import waveLogo from "@/assets/partners/wave-official.png";
+import moovMoneyLogo from "@/assets/partners/moov-money-flooz.png";
 
 type Partner = {
   name: string;
@@ -15,7 +16,7 @@ const partners: Partner[] = [
   {
     name: "Orange Money",
     logoSrc: orangeLogo,
-    logoAlt: "Logo Orange Money",
+    logoAlt: "Logo Orange",
   },
   {
     name: "MTN Mobile Money",
@@ -29,8 +30,8 @@ const partners: Partner[] = [
   },
   {
     name: "Moov Money",
-    logoSrc: moovLogo,
-    logoAlt: "Logo Moov Money",
+    logoSrc: moovMoneyLogo,
+    logoAlt: "Logo Moov Money (Flooz)",
   },
 ];
 
@@ -49,8 +50,34 @@ function PartnerLogo({ partner }: { partner: Partner }) {
       alt={partner.logoAlt ?? partner.name}
       loading="lazy"
       decoding="async"
-      className="h-8 w-auto max-w-[160px] object-contain"
+      className="h-9 w-auto max-w-[180px] object-contain"
     />
+  );
+}
+
+function TrustPill({
+  icon: Icon,
+  title,
+  description,
+}: {
+  icon: typeof Lock;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="flex items-start gap-3 rounded-2xl border border-border/60 bg-card/60 px-4 py-3 shadow-soft">
+      <div className="mt-0.5 rounded-xl border border-border/60 bg-background/60 p-2">
+        <Icon className="h-4 w-4 text-foreground" aria-hidden="true" />
+      </div>
+      <div className="min-w-0">
+        <p className="text-sm font-semibold leading-tight text-foreground">
+          {title}
+        </p>
+        <p className="mt-1 text-sm leading-snug text-muted-foreground">
+          {description}
+        </p>
+      </div>
+    </div>
   );
 }
 
@@ -60,36 +87,67 @@ export function PartnersSection() {
       <div className="absolute inset-0 pattern-dots opacity-60" aria-hidden="true" />
 
       <div className="container mx-auto px-4 relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        <motion.header
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10"
+          className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-display text-foreground">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/60 px-4 py-2 shadow-soft">
+            <BadgeCheck className="h-4 w-4 text-foreground" aria-hidden="true" />
+            <span className="text-sm font-semibold text-foreground">
+              Paiement
+            </span>
+            <span className="text-sm text-muted-foreground">
+              sécurisé & reconnu
+            </span>
+          </div>
+
+          <h2 className="mt-5 text-3xl md:text-4xl font-display text-foreground">
             Paiement sécurisé via
+            <span className="text-gradient"> Mobile Money</span>
           </h2>
           <p className="mt-3 text-muted-foreground font-medium max-w-2xl mx-auto">
-            Vos transactions sont traitées via des partenaires Mobile Money reconnus.
+            Nous nous appuyons sur des partenaires de paiement largement utilisés en Côte d’Ivoire,
+            avec une expérience fluide et des confirmations rapides.
           </p>
-        </motion.div>
+        </motion.header>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.15 }}
-          className="glass rounded-3xl p-6 md:p-8 shadow-card"
+          transition={{ delay: 0.12 }}
+          className="mt-10 glass rounded-3xl p-6 md:p-8 shadow-card"
         >
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <TrustPill
+              icon={Lock}
+              title="Données protégées"
+              description="Chiffrement et bonnes pratiques de sécurité de bout en bout."
+            />
+            <TrustPill
+              icon={ShieldCheck}
+              title="Anti‑fraude"
+              description="Réduction des risques via contrôles et validations de paiement."
+            />
+            <TrustPill
+              icon={BadgeCheck}
+              title="Confirmation rapide"
+              description="Suivi clair du statut pour éviter les incertitudes côté client."
+            />
+          </div>
+
+          <div className="mt-8 flex flex-wrap justify-center items-center gap-6 md:gap-10">
             {partners.map((partner, index) => (
               <motion.div
                 key={partner.name}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.08 * index }}
-                className="hover-lift flex items-center justify-center px-6 py-4 rounded-2xl bg-card/70 border border-border/70 shadow-soft"
+                transition={{ delay: 0.06 * index }}
+                className="hover-lift flex items-center justify-center px-7 py-5 rounded-2xl bg-card/70 border border-border/70 shadow-soft"
+                aria-label={partner.name}
               >
                 <PartnerLogo partner={partner} />
               </motion.div>
